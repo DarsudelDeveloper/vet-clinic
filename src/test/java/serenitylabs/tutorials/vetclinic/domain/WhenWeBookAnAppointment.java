@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 
 public class WhenWeBookAnAppointment {
-
+	
     private static final LocalDateTime TODAY_AT_2_PM = LocalDateTime.now().withHour(2).withMinute(0);
 
     @Test

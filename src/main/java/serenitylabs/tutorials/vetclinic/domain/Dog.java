@@ -1,27 +1,38 @@
 package serenitylabs.tutorials.vetclinic.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.common.collect.ImmutableList;
+
 public class Dog {
     private final String name;
     private final String breed;
-    private final String colour;
+    private final List<String> colour;
 
-    public Dog(String name, String breed, String colour) {
-
+    public Dog(String name, String breed, List<String> colour) {
         this.name = name;
         this.breed = breed;
         this.colour = colour;
     }
+    
 
-    public String getName() {
+    @Override
+	public String toString() {
+    	return name + " the " +(colour + " " + breed).toLowerCase();
+	}
+
+
+	public String getName() {
         return name;
     }
 
     public String getBreed() {
         return breed;
     }
-
-    public String getColour() {
-        return colour;
+    
+    public List<String> getColour() {
+        return new ArrayList<String>(colour);
     }
 
     public static DogBuilder called(String name) {
@@ -35,14 +46,14 @@ public class Dog {
         public DogBuilder(String name) {
             this.name = name;
         }
-
+        
         public DogBuilder ofBreed(String breed) {
             this.breed = breed;
             return this;
         }
 
-        public Dog andOfColour(String colour) {
-            return new Dog(name, breed, colour);
+        public Dog andOfColour(String... colour) {
+            return new Dog(name, breed, ImmutableList.copyOf(colour));
         }
     }
 }

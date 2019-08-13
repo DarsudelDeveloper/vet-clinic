@@ -11,7 +11,7 @@ public class Appointment {
 
     public static AppointmentBooker forPetCalled(String petName) {
         return new AppointmentBooker(petName);
-
+     
     }
 
     public Appointment(String petName, String owner, LocalDateTime appointmentTime, String reason) {

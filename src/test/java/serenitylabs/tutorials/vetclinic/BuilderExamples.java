@@ -14,7 +14,7 @@ public class BuilderExamples {
     public void a_string_builder_concatenates_strings() {
         // Given
         StringBuilder stringBuilder = new StringBuilder();
-
+        
         // When
         String deepThought = stringBuilder.append("The answer")
                                           .append(" is ")
@@ -36,6 +36,6 @@ public class BuilderExamples {
 
         // Then
         assertThat(names, hasItems("Alfred", "Billie", "Charlie"));
-    }
+     }
 
 }
