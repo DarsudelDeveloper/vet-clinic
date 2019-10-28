@@ -19,7 +19,7 @@ public class WhenWeCreateANewDog {
 
     @Test
     public void a_dog_should_be_printed_in_a_readable_form() {
-        Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
+        NeedsVaccinations fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black");
 
         assertThat(fido.toString(), is(equalToIgnoringCase("Fido the black Labrador")));
 
@@ -39,5 +39,20 @@ public class WhenWeCreateANewDog {
         assertThat(fido.getColour(), not(hasItem("Red")));
 
     }
-
+    
+    @Test
+    public void a_dog_complains_by_growling() {
+    	Dog fido = Dog.called("Fido").ofBreed("Labrador").andOfColour("Black","White");
+    	
+    	assertThat(fido.complaint(), is(equalTo("Grrr")));
+    	
+    }
+    
+    @Test
+    public void a_cat_complains_by_meowing() {
+    	Animal felix = Cat.called("Felix").ofBreed("Burmese").andOfColour("Brown");
+    	
+    	assertThat(felix.complaint(), is(equalTo("Meow")));
+    	
+    }
 }

@@ -2,13 +2,15 @@ package serenitylabs.tutorials.vetclinic.domain;
 
 import com.google.common.collect.ImmutableList;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cat {
+public class Cat extends Animal implements NeedsVaccinations{
     private final String name;
     private final String breed;
     private final List<String> colour;
+	private LocalDate lastVaccinationDate;
 
     public Cat(String name, String breed, List<String> colour) {
 
@@ -51,8 +53,21 @@ public class Cat {
             return this;
         }
 
-        public Cat andOfColour(String... colour) {
+        public Animal andOfColour(String... colour) {
             return new Cat(name, breed, ImmutableList.copyOf(colour));
         }
     }
+    
+    @Override
+    public String complaint() {
+		return "Meow";
+	}
+
+	public void wasVaccinatedOn(LocalDate vaccinationDate) {
+		this.lastVaccinationDate = vaccinationDate;
+	}
+
+	public LocalDate nextVaccinationDue() {
+		return lastVaccinationDate.plusYears(1);
+	}
 }
